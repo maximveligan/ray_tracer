@@ -172,7 +172,6 @@ impl Scene {
                         match self.light {
                             Light::DirLight(ref d_l) => { 
                                 let light_p = (object.get_albedo() / std::f64::consts::PI) * d_l.intensity * object.normal_vec(&(ray.origin + (ray.direction * d))).dot(-d_l.direction.normalize()).max(0.0);
-                                println!("got here");
                                 image.put_pixel(x, y, rgbf64_to_rgb8(&color_mul_const(&color_mul_color(&object.get_color(), &d_l.color), light_p)).to_rgba());
                             }
                             _ => panic!("not done yet"),
